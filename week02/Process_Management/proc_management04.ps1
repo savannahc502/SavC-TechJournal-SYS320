@@ -8,3 +8,4 @@ if (-not $chrome) {
 }
    else {
    Stop-Process -Name "chrome" -Force
+}
