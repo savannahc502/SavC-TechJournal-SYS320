@@ -1,13 +1,12 @@
 ﻿<#
-Function: Get login and logoff records from Windows Events
+Function 01: Get login and logoff records from Windows Events
+Function 02: Get system shutdown and startup events
 Input (aka parameter): Number of days to obtain logs
 Author: Savannah Ciak
 Date: 09/18/2025
 #>
 
-# User Inputs
-$Days_User = (Read-Host "Enter the days you want look back at for login/logoff records. Prefix with a subtraction sign")
-
+#############################################
 # First Function
 function GetLoginLogoffRecords($Days){
 
@@ -40,7 +39,10 @@ $loginoutsTable += [PSCustomObject]@{"Time" = $loginouts[$i].TimeGenerated;
 return $loginoutsTable
 
 } # End of function 
+#############################################
 
+
+#############################################
 # Second Function
 function GetStartupShutdownRecords($Days){
 
@@ -74,8 +76,4 @@ $eventTable += [PSCustomObject]@{"Time" = $events[$i].TimeGenerated;
 return $eventTable
 
 } # End of Function
-
-# Call Functions
-GetLoginLogoffRecords($Days_User)
-GetStartupShutdownRecords($Days_User)
-
+#############################################
