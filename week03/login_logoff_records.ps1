@@ -52,7 +52,7 @@ $startupID = 6005
 $events = Get-EventLog System -After (Get-Date).AddDays($Days) | Where-Object {$_.EventID -eq $startupID -or $_.EventID -eq $shutdownID}
 
 $eventTable = @() # Empty array to fill customly
-for ($i=0; $i -lt $events.Count; $i==){
+for ($i=0; $i -lt $events.Count; $i++){
 
 # Creating event property value
 $event = ""
@@ -61,7 +61,7 @@ if($events[$i].EventID -eq $shutdownID) {$event="System Shutdown"}
 
 # Creating user property value
 # Use System Security Principle SecurityIdentifier to translate the user id to username
-$user = (New-Object -TypeName System.Security.Principal.SecurityIdentifier $loginouts[$i].ReplacementStrings[1]).Translate([System.Security.Principal.NTAccount])
+$user = "System"
 
 # Adding each new line (in form of a custom object) to our empty array
 $eventTable += [PSCustomObject]@{"Time" = $events[$i].TimeGenerated;
