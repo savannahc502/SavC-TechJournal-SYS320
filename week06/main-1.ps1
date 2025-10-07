@@ -1,7 +1,7 @@
-﻿. (Join-Path $PSScriptRoot Users.ps1)
-. (Join-Path $PSScriptRoot Event-Logs.ps1)
+﻿. (Join-Path $PSScriptRoot "Users.ps1")
+. (Join-Path $PSScriptRoot "Event-Logs.ps1")
 
-clear
+Clear-Host
 
 $Prompt = "`n"
 $Prompt += "Please choose your operation:`n"
@@ -70,7 +70,7 @@ while($operation){
         if (checkUser $name) { 
             removeAUser $name
             Write-Host "User: $name Removed." | Out-String }
-            else { Write-Host "The username does not exist."
+            else { Write-Host "The username does not exist." }
     }
 
 
@@ -94,7 +94,7 @@ while($operation){
 
         if (checkUser $name) {
         disableAUser $name
-        Write-Host "User: $name Disabled." | Out-String
+        Write-Host "User: $name Disabled." | Out-String }
         else { Write-Host "The username does not exist." }
     }
 
@@ -116,7 +116,7 @@ while($operation){
 
         $name = Read-Host -Prompt "Please enter the username for the user's failed login logs"
 
-        if (checkuser $name) {
+        if (checkUser $name) {
             $days = Read-Host "How many days of logs should we grab? : "
             $userLogins = getFailedLogins $days
             Write-Host ($userLogins | Where-Object { $_.User -ilike "*$name"} | Format-Table | Out-String) }
