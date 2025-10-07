@@ -26,7 +26,7 @@ while ($choice -ne 5) { # Prompt the menu till user enters 5
         $browserName = Read-Host "Enter the browser name (example Firefox)"
 
         # Pulls from the required function and displays the last 10 only
-        accessedPages $page $code $browserName 
+        accessedPages $page $code $browserName }
       #  $results = accessedPages $page $code $browserName 
       #  $results | Select-Object -Last 10 } 
 
