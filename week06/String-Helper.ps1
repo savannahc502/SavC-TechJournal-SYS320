@@ -1,4 +1,7 @@
-﻿<# String-Helper
+# Example from Champlain College Course Material. 
+# Edited by Savannah Ciak on 10/7/2025
+
+ <# String-Helper
 *************************************************************
    This script contains functions that help with String/Match/Search
    operations. 
