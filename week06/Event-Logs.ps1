@@ -1,4 +1,6 @@
-﻿. (Join-Path $PSScriptRoot String-Helper.ps1)
+# Example from Champlain College Course Material. 
+# Edited by Savannah Ciak on 10/7/2025
+ . (Join-Path $PSScriptRoot String-Helper.ps1)
 
 
 <# ******************************
