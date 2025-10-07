@@ -68,3 +68,18 @@ function getFailedLogins($timeBack){
 
     return $failedloginsTable
 } # End of function getFailedLogins
+
+<# ******************************
+     Retrieves failed login attempts that are suspicious aka "high risk."
+****************************** #>
+function at_risk_users {
+    param ([int]$days)
+
+    $results = getFailedLogins $days |
+        Group-Object -Property User |
+        Where-Object { $_.Count -gt 9 } |
+        Select-Object Count, Name |
+        Out-String
+
+    Write-Host $results
+}
