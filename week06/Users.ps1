@@ -1,4 +1,5 @@
-﻿
+# Example from Champlain College Course Material. 
+# Edited by Savannah Ciak on 10/7/2025﻿
 
 <# ******************************
 # Create a function that returns a list of NAMEs AND SIDs only for enabled users
