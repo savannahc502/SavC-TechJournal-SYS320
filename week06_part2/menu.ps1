@@ -14,7 +14,7 @@ while ($choice -ne 5) { # Prompt the menu till user enters 5
   Write-Host "`nMain Menu: Pick an Option`n"
   Write-Host "1. Display the last 10 Apache logs`n" 
   Write-Host "2. Display the last 10 failed logins for all users`n" 
-  Write-Host "3. Display at-risk users (users who failed login >9 times`n)" # Idea for criteria borrowed from Matt Compton
+  Write-Host "3. Display at-risk users (users who failed login >9 times)`n" # Idea for criteria borrowed from Matt Compton
   Write-Host "4. Start Chrome web browser and navigate it to champlain.edu`n" 
   Write-Host "5. Exit`n" 
 
