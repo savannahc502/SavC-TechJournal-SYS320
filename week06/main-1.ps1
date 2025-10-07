@@ -45,22 +45,27 @@ while($operation){
 
 
     # Create a user
-    elseif($choice -eq 3){ 
-
+    elseif ($choice -eq 3) { 
         $name = Read-Host -Prompt "Please enter the username for the new user"
         $userExists = checkUser $name
 
-        if ( $userExists -eq $true ) 
-            { Write-Host "There is already a user called $name" }
-        elseif ( $userExists -eq $false ) {
-            $password = Read-Host -AsSecureString -Prompt "Please enter the password for the new user" 
-            
+        if ($userExists -eq $true) {
+            Write-Host "There is already a user called $name"
+        }
+        elseif ($userExists -eq $false) {
+            $password = Read-Host -AsSecureString -Prompt "Please enter the password for the new user"
+
             if (checkPassword $password -eq $true) {
                 $hashPW = ConvertTo-SecureString $password -AsPlainText -Force
                 createAUser $name $hashPW
-                Write-Host "User: $name is created." | Out-String } }
-            else { Write-Host "You didn't meet the password requirements. Try Again." }
+                Write-Host "User: $name is created." | Out-String
+            }
+            else {
+                Write-Host "You didn't meet the password requirements. Try Again."
+            }
+        }
     }
+
 
     # Remove a user
     elseif($choice -eq 4){
