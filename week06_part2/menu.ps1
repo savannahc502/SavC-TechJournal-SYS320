@@ -20,8 +20,12 @@ while ($choice -ne 5) { # Prompt the menu till user enters 5
 
   $choice = Read-Host -Prompt "Enter your choice (1-5)"
   
-  if ( $choice -eq 1 ) {
-      accessedPages }
+    if ( $choice -eq 1 ) {
+    $page = Read-Host "Enter the page name (e.g., index.html)"
+    $code = Read-Host "Enter the HTTP status code (e.g., 200)"
+    $browserName = Read-Host "Enter the browser name (e.g., Chrome)"
+    
+    accessedPages $page $code $browserName }
     
     elseif ( $choice -eq 2 ) {
         getFailedLogins}
