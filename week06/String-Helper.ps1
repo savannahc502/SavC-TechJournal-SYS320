@@ -30,7 +30,15 @@ return $allines
 
 function checkPassword {
     param ( [String] $password )
-    if ($password.Length -gt 5 -and $password -match '\d' -and $password -match '[a-z]' -and $password -match '[!@#$%^&*?\/~]+' ) {
-        return $true } 
-      else { return $false }
+
+    if (
+        $password.Length -gt 5 -and
+        $password -match '\d' -and
+        $password -match '[a-z]' -and
+        $password -match '[A-Z]' -and
+        $password -match '[!@#$%^&*?/~]'
+    ) { return $true } 
+   else {
+        return $false }
 }
+
