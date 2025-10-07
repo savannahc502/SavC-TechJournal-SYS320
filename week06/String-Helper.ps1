@@ -28,10 +28,6 @@ for($j=0; $j -lt $splitted.Count; $j++){
 return $allines
 }
 
-$plainPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
-    [Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
-)
-
 function checkPassword {
     param ( [String] $password )
 
