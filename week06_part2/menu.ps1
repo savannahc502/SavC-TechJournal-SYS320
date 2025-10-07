@@ -3,8 +3,8 @@
 # 7 October 2025 
 
 # Importing files containing needed functions using dot notation
-. .\week04\apache-logs.ps1 # Contains accessedPages
-. .\week06\Event-Logs.ps1 # Contains getFailedLogins and at_risk_users
+. "C:\Users\champuser\SavC-TechJournal-SYS320\week04\apache-logs.ps1" # Contains accessedPages
+. "C:\Users\champuser\SavC-TechJournal-SYS320\week06\Event-Logs.ps1" # Contains getFailedLogins and at_risk_users
 
 # Creating the variable choice 
 $choice = 0
@@ -21,11 +21,7 @@ while ($choice -ne 5) { # Prompt the menu till user enters 5
   $choice = Read-Host -Prompt "Enter your choice (1-5)"
   
     if ( $choice -eq 1 ) {
-    $page = Read-Host "Enter the page name (e.g., index.html)"
-    $code = Read-Host "Enter the HTTP status code (e.g., 200)"
-    $browserName = Read-Host "Enter the browser name (e.g., Chrome)"
-    
-    accessedPages $page $code $browserName }
+        accessedPages }
     
     elseif ( $choice -eq 2 ) {
         getFailedLogins}
