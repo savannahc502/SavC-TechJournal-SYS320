@@ -52,13 +52,13 @@ while($operation){
 
         if ( $userExists -eq $true ) 
             { Write-Host "There is already a user called $name" }
-        elseif ( $userExists -eq $false )
-            { $password = Read-Host -AsSecureString -Prompt "Please enter the password for the new user" }
+        elseif ( $userExists -eq $false ) {
+            $password = Read-Host -AsSecureString -Prompt "Please enter the password for the new user" 
             
             if (checkPassword $password -eq $true) {
                 $hashPW = ConvertTo-SecureString $password -AsPlainText -Force
                 createAUser $name $hashPW
-                Write-Host "User: $name is created." | Out-String } 
+                Write-Host "User: $name is created." | Out-String } }
             else { Write-Host "You didn't meet the password requirements. Try Again." }
     }
 
