@@ -2,7 +2,8 @@
 
 
 <# ******************************
-     Function Explaination
+    Retrieves logon and logoff events from the System event log for the past user input number of days. 
+    Identifies users and event types (Logon/Logoff) and returns a table.
 ****************************** #>
 function getLogInAndOffs($timeBack){
 
@@ -34,7 +35,8 @@ return $loginoutsTable
 
 
 <# ******************************
-     Function Explaination
+     Retrieves failed login attempts from the Security event log for the past user input number of days. 
+     Parses event messages to extract account and domain information, then returns a table.
 ****************************** #>
 function getFailedLogins($timeBack){
   
