@@ -28,7 +28,7 @@ while ($choice -ne 5) { # Prompt the menu till user enters 5
         # Pulls from the required function and displays the last 10 only
         accessedPages $page $code $browserName 
 
-        Get-Content "C:\xampp\apache\logs\access.log" -Tail 10 }
+        # Get-Content "C:\xampp\apache\logs\access.log" -Tail 10 }
     
     elseif ( $choice -eq 2 ) {
         getFailedLogins}
