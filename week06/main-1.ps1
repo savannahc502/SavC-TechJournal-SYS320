@@ -105,7 +105,7 @@ while($operation){
         $name = Read-Host -Prompt "Please enter the username for the user logs"
 
         if (checkUser $name) {
-        $days = Read-Host "How many days of logs would you like to view:"
+        $days = Read-Host "How many days of logs would you like to view"
         $userLogins = getLogInAndOffs $days
         Write-Host ($userLogins | Where-Object { $_.User -ilike "*$name"} | Format-Table | Out-String) }
         else { Write-Host "The username does not exist." }
@@ -117,7 +117,7 @@ while($operation){
         $name = Read-Host -Prompt "Please enter the username for the user's failed login logs"
 
         if (checkUser $name) {
-            $days = Read-Host "How many days of logs should we grab? : "
+            $days = Read-Host "How many days of logs would you like to view"
             $userLogins = getFailedLogins $days
             Write-Host ($userLogins | Where-Object { $_.User -ilike "*$name"} | Format-Table | Out-String) }
             else { Write-Host "The username does not exist." }
@@ -126,8 +126,7 @@ while($operation){
 
 
     elseif($choice -eq 9) {
-        $days = Read-Host "How many days of logs should we grab? : "
-        Write-Host "How many days of logs would you like to view:"
+        $days = Read-Host "How many days of logs would you like to view"
         Write-Host (getFailedLogins $days | Group-Object -Property User | Where-Object { $_.Count -gt 9} | Select Count, Name | Out-String) }
 
     else { Write-Host "$choice is invalid. Please try again with a number 1-10." }
