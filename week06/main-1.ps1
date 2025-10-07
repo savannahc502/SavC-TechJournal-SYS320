@@ -138,8 +138,7 @@ while($operation){
 
     elseif($choice -eq 9) {
         $days = Read-Host "How many days of logs would you like to view"
-        Write-Host (getFailedLogins $days | Group-Object -Property User | Where-Object { $_.Count -gt 9} | Select Count, Name | Out-String) }
-
+        at_risk_users -days $days }
     else { Write-Host "$choice is invalid. Please try again with a number 1-10." }
 }
 
