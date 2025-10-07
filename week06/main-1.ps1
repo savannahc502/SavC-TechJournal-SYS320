@@ -54,9 +54,12 @@ while($operation){
         }
         elseif ($userExists -eq $false) {
             $password = Read-Host -AsSecureString -Prompt "Please enter the password for the new user"
+            $plainPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
+            [Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+            )
 
-            if (checkPassword $password -eq $true) {
-                $hashPW = ConvertTo-SecureString $password -AsPlainText -Force
+            if (checkPassword $plainPassword -eq $true) {
+                $hashPW = ConvertTo-SecureString $plainPassword -AsPlainText -Force
                 createAUser $name $hashPW
                 Write-Host "User: $name is created." | Out-String
             }
