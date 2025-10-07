@@ -73,3 +73,11 @@ function enableAUser($name){
    Enable-LocalUser $userToBeEnabled
    
 }
+
+function checkUser($name){
+
+    $maybeUser = Get-LocalUser | Where-Object { $_.name -ilike $name }
+  if ($maybeUser -eq $null) {
+    return $false } 
+    else { return $true }
+}
