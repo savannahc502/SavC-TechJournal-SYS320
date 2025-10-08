@@ -3,8 +3,8 @@
 # 7 October 2025 
 
 # Importing files containing needed functions using dot notation
-. "C:\Users\champuser\SavC-TechJournal-SYS320\week04\parsing-apache-logs.ps1" # Contains ApacheLogs1
-. "C:\Users\champuser\SavC-TechJournal-SYS320\week06\Event-Logs.ps1" # Contains getFailedLogins and at_risk_users
+. "C:\Users\champuser\SavC-TechJournal-SYS320\week04\parsing-apache-logs.ps1" | Out-Null # Contains ApacheLogs1
+. "C:\Users\champuser\SavC-TechJournal-SYS320\week06\Event-Logs.ps1" | Out-Null # Contains getFailedLogins and at_risk_users
 
 # Creating the variable choice 
 $choice = 0
