@@ -21,27 +21,29 @@ while ($choice -ne 5) { # Prompt the menu till user enters 5
   $choice = Read-Host -Prompt "Enter your choice (1-5)"
   
     if ($choice -eq 1) {
-        Write-Host "Displaying Last 10 Apache Logs:`n" | Out-String
-        ApacheLogs1 | Select-Object -Last 10 |Format-Table -AutoSize -Wrap }
-    
-    elseif ( $choice -eq 2 ) {
-        getFailedLogins}
-    
-    elseif ( $choice -eq 3 ) {
-        at_risk_users }
-    
-    elseif ( $choice -eq 4 ) {
-        $chromeRunning = Get-Process -Name "chrome" -ErrorAction SilentlyContinue
-        if ( -not $chromeRunning ) {
-            Start-Process "chrome.exe" "https://www.champlain.edu"
-            Write-Host "Chrome started and navigated to champlain.edu" }
-            
-        else {
-            Write-Host "Chrome is already running." }}
-            
-    elseif ( $choice -eq 5 ) {
-        Write-Host "Exiting menu"}
-        
+    Write-Host "Displaying Last 10 Apache Logs:`n"
+    ApacheLogs1 | Select-Object -Last 10 | Format-Table -AutoSize -Wrap
+    }
+    elseif ($choice -eq 2) {
+      getFailedLogins
+    }
+    elseif ($choice -eq 3) {
+      at_risk_users
+    }
+    elseif ($choice -eq 4) {
+      $chromeRunning = Get-Process -Name "chrome" -ErrorAction SilentlyContinue
+      if (-not $chromeRunning) {
+          Start-Process "chrome.exe" "https://www.champlain.edu"
+          Write-Host "Chrome started and navigated to champlain.edu"
+      }
+      else {
+        Write-Host "Chrome is already running."
+      }
+    }
+    elseif ($choice -eq 5) {
+        Write-Host "Exiting menu"
+    }
     else {
-        Write-Host "Invalid input. Enter an integer between 1 and 5."}
+    Write-Host "Invalid input. Enter an integer between 1 and 5."
+    }
 }
