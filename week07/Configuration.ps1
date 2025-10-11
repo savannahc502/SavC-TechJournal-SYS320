@@ -24,3 +24,55 @@ function readConfiguration {
     }
 }
 
+# Edits the configuration.txt file 
+function changeConfiguration { 
+    $validDays = $false
+    while (-not $validDays) {
+        $days = Read-Host "Enter number of days to evaluate logs (integer only)"
+        if ($days -match '^\d+$') {
+            $validDays = $true
+        } else {
+            Write-Host "Invalid input, try again bestie." 
+        }
+    }
+
+    $validTime = $fale
+    while (-not $validTime) {
+        $time = Read-Host "Enter execution time in format H:MM AM/PM)"
+        if ($time -match '^\d{1,2}:\d{2}\s?(AM|PM)$') {
+            $validTime = $true
+        } else {
+            Write-Host "Invalid input, try again bestie." 
+        }
+    }
+
+    "$days" > $configFile
+    "$time" >> $configFile
+
+    Write-Host "$configFile updated." 
+} 
+
+# Display menu for user choices 
+function configMenu {
+    $running = $true
+    while ($running) {
+        Write-Host "`n=== Configuration Menu ===" 
+        Write-Host "1. Show configuration"
+        Write-Host "2. Change configuration"
+        Write-Host "3. Exit" 
+        $choice = Read-Host "`nEnter choice 1, 2, or 3"
+
+        if ($choice -eq '1') {
+            readConfiguration
+        } elseif ($choice -eq '2') {
+            changeConfiguration
+        } elseif ($choice -eq '3') {
+            Write-Host "`nBye barbie" 
+            $running = $false
+        } else {
+            Write-Host "`nCome on, you only have three choices" 
+        }
+    }
+}
+
+configMenu #Start the menu 
