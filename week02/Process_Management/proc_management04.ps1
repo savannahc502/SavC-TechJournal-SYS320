@@ -13,7 +13,7 @@
 $chrome = Get-Process -Name "chrome" -ErrorAction SilentlyContinue
 
 if (-not $chrome) {
-   Start-Process "chrome.exe" "https://www/champlain.edu"
+   Start-Process "chrome.exe" "https://www.champlain.edu"
    Write-Output "Champlain Website Loading..."
 }
    else {
