@@ -17,10 +17,10 @@ function readConfiguration {
             }
             return $config # Returns custom object 
         } else { 
-            Write-Host "$configFile file is incomplete or formatted incorrectly." 
+            Write-Host "`n$configFile file is incomplete or formatted incorrectly." 
         }
     } else {
-        Write-Host "$configFile file not found."
+        Write-Host "`n$configFile file not found."
     }
 }
 
@@ -32,24 +32,24 @@ function changeConfiguration {
         if ($days -match '^\d+$') {
             $validDays = $true
         } else {
-            Write-Host "Invalid input, try again bestie." 
+            Write-Host "`nInvalid input, try again bestie." 
         }
     }
 
-    $validTime = $fale
+    $validTime = $false
     while (-not $validTime) {
         $time = Read-Host "Enter execution time in format H:MM AM/PM)"
         if ($time -match '^\d{1,2}:\d{2}\s?(AM|PM)$') {
             $validTime = $true
         } else {
-            Write-Host "Invalid input, try again bestie." 
+            Write-Host "`nInvalid input, try again bestie." 
         }
     }
 
     "$days" > $configFile
     "$time" >> $configFile
 
-    Write-Host "$configFile updated." 
+    Write-Host "`n$configFile updated." 
 } 
 
 # Display menu for user choices 
@@ -63,7 +63,7 @@ function configMenu {
         $choice = Read-Host "`nEnter choice 1, 2, or 3"
 
         if ($choice -eq '1') {
-            readConfiguration
+            readConfiguration | Format-List
         } elseif ($choice -eq '2') {
             changeConfiguration
         } elseif ($choice -eq '3') {
