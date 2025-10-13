@@ -4,11 +4,6 @@
 # Author: Savannah Ciak
 # Date: 11 October 2025 
 
-### ADDED: Support for silent mode
-param (
-    [switch]$Silent
-)
-
 $configFile = "configuration.txt"
 
 # Reads and prints the configuration.txt file
@@ -78,9 +73,4 @@ function configMenu {
             Write-Host "`nCome on, you only have three choices" 
         }
     }
-}
-
-### CHANGED: Only run menu if not in silent mode
-if (-not $Silent) {
-    configMenu #Start the menu 
 }
