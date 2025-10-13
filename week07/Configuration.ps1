@@ -74,3 +74,5 @@ function configMenu {
         }
     }
 }
+
+configMenu #Start the menu 
