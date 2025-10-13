@@ -7,7 +7,7 @@
 $configuration = readConfiguration
 
 # Obtaining at risk users
-$Failed = at_risk_users $configuration.Days
+$Failed = at_risk_users $configuration.days
 
 # Sending at risk users as email
 SendAlertEmail "Suspicious Activity`n$($Failed | Format-Table | Out-String)"
