@@ -56,6 +56,13 @@ function changeConfiguration {
 # Display menu for user choices 
 function configMenu {
     $running = $true
+    
+    # Skip menu if running in non-interactive mode (e.g., Task Scheduler)
+    if (-not [Environment]::UserInteractive) {
+        Write-Host "`nDetected non-interactive session. Skipping menu..."
+        $running = $false
+    }
+
     while ($running) {
         Write-Host "`n=== Configuration Menu ===" 
         Write-Host "1. Show configuration"
