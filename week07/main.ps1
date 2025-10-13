@@ -10,7 +10,9 @@ $configuration = readConfiguration
 $Failed = at_risk_users $configuration.Days
 
 # Sending at risk users as email
-SendAlertEmail "Suspicious Activity" ($Failed | Format-Table | Out-String)
+SendAlertEmail "Suspicious Activity`n$($Failed | Format-Table | Out-String)"
 
 # Setting the script to be run daily 
-ChooseTimeToRun $configuration.ExecutionTime
+if (-not (Get-ScheduledTask | Where-Object { $_.TaskName -eq "myTask" })) {
+    ChooseTimeToRun $configuration.ExecutionTime
+}
