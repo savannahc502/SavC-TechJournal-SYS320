@@ -1,7 +1,13 @@
 ﻿. "C:\Users\champuser\SavC-TechJournal-SYS320\week06\Event-Logs.ps1"
 . "C:\Users\champuser\SavC-TechJournal-SYS320\week07\Email.ps1"
 . "C:\Users\champuser\SavC-TechJournal-SYS320\week07\Scheduler.ps1"
-. "C:\Users\champuser\SavC-TechJournal-SYS320\week07\Configuration.ps1" -Silent
+. "C:\Users\champuser\SavC-TechJournal-SYS320\week07\Configuration.ps1" 
+
+$IsInteractive = $Host.Name -eq 'ConsoleHost'
+
+if ($IsInteractive) {
+  configMenu
+} 
 
 # Obtaining configuration
 $configuration = Get-Content "C:\Users\champuser\SavC-TechJournal-SYS320\week07\configuration.txt" 
