@@ -4,14 +4,14 @@
 . "C:\Users\champuser\SavC-TechJournal-SYS320\week07\Configuration.ps1"
 
 # Obtaining configuration
-$configuration = readConfiguration
+$configuration = Get-Content "C:\Users\champuser\SavC-TechJournal-SYS320\week07\configuration.txt"
 
 # Obtaining at risk users
-$Failed = at_risk_users $configuration.days
+$Failed = at_risk_users($configuration[0])
 
 # Sending at risk users as email
-SendAlertEmail "Suspicious Activity`n$($Failed | Format-Table | Out-String)"
+SendAlertEmail($Failed | Format-Table | Out-String)
 
 # Setting the script to be run daily 
-ChooseTimeToRun $configuration.ExecutionTime
+ChooseTimeToRun($configuration[1])
 

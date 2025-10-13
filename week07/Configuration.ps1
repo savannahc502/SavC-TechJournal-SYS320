@@ -13,7 +13,7 @@ function readConfiguration {
         if ($fileContent.Count -ge 2) { # Checks for two lines
             $config = [PSCustomObject]@{ # Create custom object
                 Days = $fileContent[0] # First line in file defined as Days
-                ExecutionTime = $fileContent[1] # Seond line in file defined as ExecutionTime
+                ExecutionTime = $fileContent[1] # Second line in file defined as ExecutionTime
             }
             return $config # Returns custom object 
         } else { 
