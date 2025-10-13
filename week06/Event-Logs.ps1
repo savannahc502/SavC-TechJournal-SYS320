@@ -82,4 +82,5 @@ function at_risk_users {
         Out-String
 
     Write-Host $results
+    return results
 }
