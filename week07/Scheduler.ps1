@@ -10,7 +10,7 @@ if($scheduledTasks -ne $null){
 Write-Host "Creating new task." | Out-String
 
 $action = New-ScheduledTaskAction -Execute "powershell.exe" `
-        -Argument "-File 'C:\\Users\\champuser\\SavC-TechJournal-SYS320\\week07\\main.ps1'"
+        -Argument "-File `"C:\\Users\\champuser\\SavC-TechJournal-SYS320\\week07\\main.ps1`""
 $trigger = New-ScheduledTaskTrigger -Daily -At $Time
 $principal = New-ScheduledTaskPrincipal -UserId 'champuser' -RunLevel Highest
 $settings = New-ScheduledTaskSettingsSet -RunOnlyIfNetworkAvailable -WakeToRun
