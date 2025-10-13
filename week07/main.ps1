@@ -4,7 +4,7 @@
 . "C:\Users\champuser\SavC-TechJournal-SYS320\week07\Configuration.ps1"
 
 # Obtaining configuration
-$configuration = Get-Content "C:\Users\champuser\SavC-TechJournal-SYS320\week07\configuration.txt"
+$configuration = Get-Content "C:\Users\champuser\SavC-TechJournal-SYS320\week07\configuration.txt" -Silent
 
 # Obtaining at risk users
 $Failed = at_risk_users($configuration[0])
