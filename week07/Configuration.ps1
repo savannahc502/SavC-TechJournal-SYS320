@@ -52,6 +52,7 @@ function changeConfiguration {
     Write-Host "`n$configFile updated." 
 } 
 
+<#
 # Display menu for user choices 
 function configMenu {
     $running = $true
@@ -76,3 +77,47 @@ function configMenu {
 }
 
 configMenu #Start the menu 
+#>
+
+function configMenu {
+    $timeoutSeconds = 10  # Times out after 10 seconds 
+    $running = $true
+
+    while ($running) {
+        Write-Host "`n=== Configuration Menu ==="
+        Write-Host "1. Show configuration"
+        Write-Host "2. Change configuration"
+        Write-Host "3. Exit"
+        Write-Host "`nEnter choice 1, 2, or 3 (auto-exits in $timeoutSeconds seconds):"
+
+        $choice = $null
+        $startTime = Get-Date
+
+        while ((Get-Date) -lt $startTime.AddSeconds($timeoutSeconds)) {
+            if ([System.Console]::KeyAvailable) {
+                $key = [System.Console]::ReadKey($true)
+                $choice = $key.KeyChar
+                break
+            }
+            Start-Sleep -Milliseconds 200
+        }
+
+        if (-not $choice) {
+            Write-Host "`nNo input received. Defaulting to option 3 (Exit)."
+            $choice = '3'
+        } else {
+            Write-Host "`nYou selected: $choice"
+        }
+
+        if ($choice -eq '1') {
+            readConfiguration | Format-List
+        } elseif ($choice -eq '2') {
+            changeConfiguration
+        } elseif ($choice -eq '3') {
+            Write-Host "`nBye barbie"
+            $running = $false
+        } else {
+            Write-Host "`nCome on, you only have three choices"
+        }
+    }
+}
