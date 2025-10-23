@@ -6,7 +6,8 @@
 
     $not_found = Get-Content -Path $file_path
     $regex_format = [regex] '^(?<IP>\d+\.\d+\.\d+\.\d+) - - \[(?<Time>[^\]]+)\] "(?<Method>[A-Z]+) (?<Page>.*?) (?<Protocol>HTTP/[\d\.]+)" (?<ResponseCode>\d+) \d+ "(?<Referrer>.*?)"'
-    
+    # Regex idea given by Seraphim while she was working on another assignment for a different class 
+
     $data_array = @()
 
     foreach ($i in $not_found) {
