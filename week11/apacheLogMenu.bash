@@ -24,7 +24,7 @@ function histogram(){
 	# This is for debugging, print here to see what it does to continue:
 	# echo "$visitsPerDay"
 
-        :> newtemp.txt  # what :> does is in slides
+        :> tmp_file02.txt  # what :> does is in slides
 	echo "$visitsPerDay" | while read -r line;
 	do
 		local withoutHours=$(echo "$line" | cut -d " " -f 2 \
@@ -32,9 +32,9 @@ function histogram(){
 		local IP=$(echo "$line" | cut -d  " " -f 1)
           
 		local newLine="$IP $withoutHours"
-		echo "$IP $withoutHours" >> newtemp.txt
+		echo "$IP $withoutHours" >> tmp_file02.txt
 	done 
-	cat "newtemp.txt" | sort -n | uniq -c
+	cat "tmp_file02.txt" | sort -n | uniq -c
 	printf "\n"
 }
 
@@ -48,14 +48,14 @@ function histogram(){
 
 function frequentVisitors(){
 	
-	:> freqtemp.txt
+	:> tmp_file01.txt
 	
 	cat "$logFile" | cut -d " " -f 1,4 | tr -d "[" | while read -r ip datetime; do
 		date=$(echo "$datetime" | cut -d ":" -f1)
-		echo "$ip $date" >> freqtemp.txt
+		echo "$ip $date" >> tmp_file01.txt
 	done
 
-	sort freqtemp.txt | uniq -c | while read -r count ip date ; do
+	sort tmp_file01.txt | uniq -c | while read -r count ip date ; do
 		if (( count > 10 )); then
 			echo "$count $ip $date"
 			printf "\n"
