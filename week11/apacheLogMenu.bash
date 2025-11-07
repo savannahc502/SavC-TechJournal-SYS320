@@ -3,15 +3,13 @@
 logFile="/var/log/apache2/access.log.1"
 
 function displayAllLogs(){
-	cat "$logFile"
-}
+	cat "$logFile"}
 
 function displayOnlyIPs(){
-        cat "$logFile" | cut -d ' ' -f 1 | sort -n | uniq -c
-}
+        cat "$logFile" | cut -d ' ' -f 1 | sort -n | uniq -c}
 
-# function: displayOnlyPages:
-# like displayOnlyIPs - but only pages
+function displayOnlyPages(){
+	cat "$logFile" | cut -d ' ' -f 7 | sort -n | uniq -c}
 
 function histogram(){
 
@@ -30,8 +28,7 @@ function histogram(){
 		local newLine="$IP $withoutHours"
 		echo "$IP $withoutHours" >> newtemp.txt
 	done 
-	cat "newtemp.txt" | sort -n | uniq -c
-}
+	cat "newtemp.txt" | sort -n | uniq -c}
 
 # function: frequentVisitors: 
 # Only display the IPs that have more than 10 visits
@@ -40,6 +37,21 @@ function histogram(){
 # number and check with a condition whether it is greater than 10
 # the output should be almost identical to histogram
 # only with daily number of visits that are greater than 10 
+
+function frequentVisitors(){
+	
+	:> freqtemp.txt
+	
+	cat "$logFile" | cut -d " " -f 1,4 | tr -d "[" | while read -r ip datetime; do
+		date=$(echo "$datetime" | cut -d ":" -f1)
+		echo "$ip $date" >> freqtemp.txt
+	done
+
+	sort freqtemp.txt | uniq -c | while read -r count ip date ; do
+		if (( count > 10 )); then
+			echo "$count $ip $date"
+		fi
+	done}
 
 # function: suspiciousVisitors
 # Manually make a list of indicators of attack (ioc.txt)
@@ -51,15 +63,33 @@ function histogram(){
 # demonstrate loops, functions, etc. If you can do things simpler,
 # it is welcomed.
 
+function suspiciousVisitors(){
+	declare -A ips
+
+	while read -r ioc; do
+		matches=$(grep "$ioc" "$logFile")
+
+		while read -r line; do
+			ip=$(echo "$line" | awk '{print $1}')
+			if [[ -n "$ip" ]]; then
+				((ips["$ip"]++))
+			fi
+		done <<< "$matches"
+	done < "ioc.txt"
+
+	for ip in "${!ips[@]}"; do
+		echo "${ips[$ip]} $ip"
+	done}
+
 while :
 do
-	echo "PLease select an option:"
+	echo "Please select an option:"
 	echo "[1] Display all Logs"
 	echo "[2] Display only IPS"
-	# Display only pages visited
+	echo "[3] Display only Pages"
 	echo "[4] Histogram"
-	# Frequent visitors
-	# Suspicious visitors
+	echo "[5] Frequent Visitors"
+	echo "[6] Suspicious Visitors"
 	echo "[7] Quit"
 
 	read userInput
@@ -77,15 +107,21 @@ do
 		echo "Displaying only IPS:"
 		displayOnlyIPs
 
-	# Display only pages visited
+	elif [[ "$userInput" == "3" ]]; then
+		echo "Displaying only pages:"
+		displayOnlyPages
 
 	elif [[ "$userInput" == "4" ]]; then
 		echo "Histogram:"
 		histogram
 
-        # Display frequent visitors
-	# Display suspicious visitors
-	# Display a message, if an invalid input is given
+	elif [[ "$userInput" == "6" ]]; then
+		echo "Suspicious visitors count:"
+		suspiciousVisitors
+
+	else 
+		echo "Why would you try to enter a number not in the menu? You're hurting my feelings :("
+
 	fi
 done
 
