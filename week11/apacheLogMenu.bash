@@ -4,14 +4,17 @@ logFile="/var/log/apache2/access.log"
 
 function displayAllLogs(){
 	cat "$logFile"
+	printf "\n"
 }
 
 function displayOnlyIPs(){
         cat "$logFile" | cut -d ' ' -f 1 | sort -n | uniq -c
+		printf "\n"
 }
 
 function displayOnlyPages(){
 	cat "$logFile" | cut -d ' ' -f 7 | sort -n | uniq -c
+	printf "\n"
 }
 
 function histogram(){
@@ -32,6 +35,7 @@ function histogram(){
 		echo "$IP $withoutHours" >> newtemp.txt
 	done 
 	cat "newtemp.txt" | sort -n | uniq -c
+	printf "\n"
 }
 
 # function: frequentVisitors: 
@@ -54,6 +58,7 @@ function frequentVisitors(){
 	sort freqtemp.txt | uniq -c | while read -r count ip date ; do
 		if (( count > 10 )); then
 			echo "$count $ip $date"
+			printf "\n"
 		fi
 	done
 }
@@ -85,6 +90,7 @@ function suspiciousVisitors(){
 	for ip in "${!ips[@]}"; do
 		echo "${ips[$ip]} $ip"
 	done
+	printf "\n"
 }
 
 while :
