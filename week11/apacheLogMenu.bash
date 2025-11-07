@@ -121,6 +121,10 @@ do
 		echo "Histogram:"
 		histogram
 
+	elif [[ "$userInput" == "5" ]]; then
+		echo "Frequent visitors:"
+		frequentVisitors
+
 	elif [[ "$userInput" == "6" ]]; then
 		echo "Suspicious visitors count:"
 		suspiciousVisitors
