@@ -1,8 +1,8 @@
+#! /bin/bash
+
 # Author: Savannah Ciak
 # Date: 11/6/2025
 # Edits, suggestions, and help were provided by several classmates on this assignment. 
-
-#! /bin/bash
 
 logFile="/var/log/apache2/access.log"
 
