@@ -3,13 +3,16 @@
 logFile="/var/log/apache2/access.log.1"
 
 function displayAllLogs(){
-	cat "$logFile"}
+	cat "$logFile"
+}
 
 function displayOnlyIPs(){
-        cat "$logFile" | cut -d ' ' -f 1 | sort -n | uniq -c}
+        cat "$logFile" | cut -d ' ' -f 1 | sort -n | uniq -c
+}
 
 function displayOnlyPages(){
-	cat "$logFile" | cut -d ' ' -f 7 | sort -n | uniq -c}
+	cat "$logFile" | cut -d ' ' -f 7 | sort -n | uniq -c
+}
 
 function histogram(){
 
@@ -28,7 +31,8 @@ function histogram(){
 		local newLine="$IP $withoutHours"
 		echo "$IP $withoutHours" >> newtemp.txt
 	done 
-	cat "newtemp.txt" | sort -n | uniq -c}
+	cat "newtemp.txt" | sort -n | uniq -c
+}
 
 # function: frequentVisitors: 
 # Only display the IPs that have more than 10 visits
@@ -51,7 +55,8 @@ function frequentVisitors(){
 		if (( count > 10 )); then
 			echo "$count $ip $date"
 		fi
-	done}
+	done
+}
 
 # function: suspiciousVisitors
 # Manually make a list of indicators of attack (ioc.txt)
@@ -79,7 +84,8 @@ function suspiciousVisitors(){
 
 	for ip in "${!ips[@]}"; do
 		echo "${ips[$ip]} $ip"
-	done}
+	done
+}
 
 while :
 do
