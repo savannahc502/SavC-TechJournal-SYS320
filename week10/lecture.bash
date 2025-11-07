@@ -1,5 +1,6 @@
 #!/bin/bash
 
+all_logs=""
 file="/var/log/apache2/access.log"
 
 function filterPage2Requests(){
