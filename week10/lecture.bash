@@ -3,12 +3,10 @@
 all_logs=""
 file="/var/log/apache2/access.log"
 
-function filterPage2Requests(){
-    all_logs=$(grep 'GET /page2.html' "$file" | cut -d' ' -f1,7 | tr -s ' ' | while read ip page; do
-        echo "$ip ${page#/}"
-    done)
+function pageCount(){
+    all_logs=$(cat "$file" | cut -d' ' -f1,7 | tr -s ' ' | sort | uniq -c)
 }
 
-filterPage2Requests
+pageCount
 echo "$all_logs"
 
