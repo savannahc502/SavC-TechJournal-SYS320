@@ -2,7 +2,7 @@
 
 file="/home/champuser/SavC-TechJournal-SYS320/week12/fileaccesslog.txt"
 time=$(date "+%Y-%m-%d %I:%M:%S %p") 
-echo "File was accessed on $timestamp" >> "$file"
+echo "File was accessed on $time" >> "$file"
 
 function read_log(){
 	cat $file
