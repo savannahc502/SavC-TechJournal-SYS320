@@ -11,6 +11,6 @@ function logFile(){
 echo "To: savannah.ciak@mymail.champlain.edu" > email.txt
 echo "Subject: File Access" >> email.txt
 
-log >> email.txt
+logFile >> email.txt
 
 cat email.txt | ssmtp savannah.ciak@mymail.champlain.edu
