@@ -1,12 +1,16 @@
 #!/bin/bash
 
-file="/home/champuser/SavC-TechJournal-SYS320/week12/fileaccesslog.txt"
-time=$(date "+%Y-%m-%d %I-%M-%S %p")
-echo "File was accessed on $time" >> "$file"
+log="/home/champuser/SavC-TechJournal-SYS320/week12/fileaccesslog.txt"
+time=$(date "+%Y-%m-%d %I:%M:%S %p")
+echo "File was accessed at $time" >> "$log"
 
-{ echo "To: savannah.ciak@mymail.champlain.edu"
-  echo "Subject: File Access Log"
-  cat "$file"
-} > email.txt
+function logFile(){
+ cat $log
+}
 
-ssmtp savannah.ciak@mymail.champlain.edu < email.txt
+echo "To: savannah.ciak@mymail.champlain.edu" > email.txt
+echo "Subject: File Access" >> email.txt
+
+log >> email.txt
+
+cat email.txt | ssmtp savannah.ciak@mymail.champlain.edu
