@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# Author: Savannah Ciak
+# Date: 11/6/2025
+# Edits, suggestions, and help were provided by several classmates on this assignment. 
+
 logFile="/var/log/apache2/access.log"
 
 function displayAllLogs(){
