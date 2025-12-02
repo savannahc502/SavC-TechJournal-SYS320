@@ -2,7 +2,7 @@
 clear
 
 # filling courses.txt
-bash courses.bash
+bash Courses.bash
 
 courseFile="courses.txt"
 
