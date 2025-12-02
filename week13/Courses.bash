@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # This is the link we will scrape
-link="10.0.17.6/Courses.html"
+link="http://10.0.17.6/Courses.html"
 
 # get it with curl and tell curl not to give errors
 fullPage=$(curl -sL "$link")
@@ -10,7 +10,6 @@ fullPage=$(curl -sL "$link")
 toolOutput=$(echo "$fullPage" | \
 xmlstarlet format --html --recover 2>/dev/null | \
 xmlstarlet select --template --copy-of \
-# "//html//body//div//div//table//tr")
 "//html//body//table//tr")
 
 # Processing HTML with sed
@@ -23,9 +22,3 @@ echo "$toolOutput" | sed 's/<\/tr>/\n/g' | \
                      sed -e 's/<[/\]\{0,1\}a[^>]*>//g' | \
                      sed -e 's/<[/\]\{0,1\}nobr>//g' \
 		      > courses.txt
-
-
-
-
-
-
