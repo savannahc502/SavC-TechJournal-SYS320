@@ -3,7 +3,7 @@
 link="http://10.0.17.6/Assignment.html"
 fullPage=$(curl -sL "$link")
 
-# First Attempt
+# First Attempt, formatting was off
 # toolOutput=$(echo "$fullPage" | \
 # xmlstarlet format --html --recover 2>/dev/null | \
 # xmlstarlet select --template \
