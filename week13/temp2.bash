@@ -29,4 +29,4 @@ xmlstarlet sel -t -m "//table[@id='temp']/tr/td[2]" -v . -n)
 press=$(echo "$fullPage" | \
 xmlstarlet sel -t -m "//table[@id='press']/tr/td[1]" -v . -n)
 
-paste <(echo "$temps") <(echo "$press") <(echo "$times")
+paste <(echo "$press") <(echo "$temps") <(echo "$times")
