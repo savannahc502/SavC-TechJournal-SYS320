@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author: Savannah Ciak
-# This script scrapes a specific IP address for the text it lists in a table 
+# This script scrapes an HTML file for the text it lists in a table 
 # and saves the output to a text file 
 
 echo "Checking for IOC.html in the current directory"
