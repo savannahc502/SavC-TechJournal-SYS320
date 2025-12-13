@@ -5,8 +5,8 @@
 
 echo ""
 
-page =$(curl -s http://10.0.17.IOC/html)
+page=$(curl -s http://10.0.17.IOC/html)
 
-table+$(echo "$page" | grep -oP '(?<=<td>).*?(?=</td>)' | sed -n '1~2p')
+table=$(echo "$page" | grep -oP '(?<=<td>).*?(?=</td>)' | sed -n '1~2p')
 
 echo "$table" > IOC.txt
