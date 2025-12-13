@@ -13,8 +13,10 @@ if [[ ! -f "IOC.html" ]]; then
 fi
 
 # File Exists
-xmlstarlet sel -t -m "//table/tr[position()>1]" \
-  -v "td[1]" -n IOC.html > IOC.txt
+xmlstarlet sel -H -t -m "//table/tr[position()>1]" \
+ -v "td[1]" -o "  " \
+ -v "td[3]" -n IOC.html > IOC.txt
+echo ""
 
 # Output
 if [[ -f "IOC.txt" ]]; then
