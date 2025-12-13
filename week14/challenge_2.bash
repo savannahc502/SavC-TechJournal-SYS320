@@ -4,8 +4,9 @@ read logfile
 
 echo ""
 
-echo "Enter the scanning file:"
+echo "Enter the IOC file:"
 read iocfile
+# In our case, iocfile should be IOC.txt
 
 # Clearing report file
 > report.txt
