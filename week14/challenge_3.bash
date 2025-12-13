@@ -36,4 +36,4 @@ EOF
 
 sudo mv report.html /var/www/html
 
-echo "the report.html has been relocated to the webpage."
+echo "The file created named report.html has been moved to the webpage directory."
