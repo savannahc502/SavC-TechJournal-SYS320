@@ -6,8 +6,7 @@
 echo ""
 
 curl -s http://10.0.17.16/IOC.html | \
-xmlstarlet sel -H -t -m "//table/tr[position()>1]" \
-  -v "td[1]" -o "  " \
-  -v "td[3]" -n > IOC.txt
+xmlstarlet sel -t -m "//table/tr[position()>1]" \
+  -v "td[1]" -n > IOC.txt
 
 echo ""
