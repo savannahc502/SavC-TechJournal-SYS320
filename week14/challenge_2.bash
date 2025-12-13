@@ -16,6 +16,8 @@ while IFS= read -r ioc;
 do
 	ioc=$(echo "$ioc" | xargs)
 	[[ -z "$ioc" ]] && continue
-	grep -F "$ioc" "$logfile" | awk '{print $1, $4, $7}' >> report.txt
+	grep -Fi "$ioc" "$logfile" | awk '{print $1, $4, $7}' >> report.txt
 
 done < "$iocfile"
+
+echo "Scan complete. Results saved to report.txt"
