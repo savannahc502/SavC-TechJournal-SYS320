@@ -5,8 +5,12 @@
 
 echo ""
 
-curl -s http://10.0.17.16/IOC.html | \
+URL="http://10.0.17.16/IOC.html"
+
+echo "Page Downloading" 
+curl -s "URL" -o IOC.html
+
 xmlstarlet sel -t -m "//table/tr[position()>1]" \
-  -v "td[1]" -n > IOC.txt
+  -v "td[1]" -n IOC.html > IOC.txt
 
 echo ""
