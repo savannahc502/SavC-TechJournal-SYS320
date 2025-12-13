@@ -5,6 +5,6 @@
 
 echo ""
 
-curl -s http://10.0.17.IOC.html | \ 
+curl -s http://10.0.17.IOC/html | \
 grep -Eo '(etc/passwd|/bin/bash|/bin/sh|1=1#|1=1--)' > IOC.txt
 cat IOC.txt
