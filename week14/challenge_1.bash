@@ -5,8 +5,8 @@
 
 echo ""
 
-page=$(curl -s http://10.0.17.IOC/html)
-
-table=$(echo "$page" | grep -oP '(?<=<td>).*?(?=</td>)' | sed -n '1~2p')
-
-echo "$table" > IOC.txt
+xmlstarlet sel -H -t -m "//table/tr[position()>1]" \
+ -v "td[1]" -o "  " \
+ -v "td[3]" -n IOC.html > IOC.txt
+ 
+echo ""
