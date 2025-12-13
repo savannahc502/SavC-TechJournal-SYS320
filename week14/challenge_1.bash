@@ -5,6 +5,8 @@
 
 echo ""
 
-curl -s http://10.0.17.IOC/html | \
-grep -Eo '(etc/passwd|/bin/bash|/bin/sh|1=1#|1=1--)' > IOC.txt
-cat IOC.txt
+page =$(curl -s http://10.0.17.IOC/html)
+
+table+$(echo "$page" | grep -oP '(?<=<td>).*?(?=</td>)' | sed -n '1~2p')
+
+echo "$table" > IOC.txt
